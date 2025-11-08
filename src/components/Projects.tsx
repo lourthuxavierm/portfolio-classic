@@ -68,7 +68,9 @@ const Projects = () => {
             icon: Briefcase,
             color: "from-gray-600 to-gray-800",
             category: "Full Stack",
-            status: "Live"
+            status: "Live",
+            demoLink: 'https://portfolio-classic-delta.vercel.app/',
+            sourceCode: 'https://github.com/lourthuxavierm/portfolio-classic'
         }
     ];
 
@@ -159,9 +161,8 @@ const Projects = () => {
                         </motion.button>
                     ))}
                 </motion.div>
-
                 <motion.div
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto"
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto px-4"
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
@@ -170,27 +171,30 @@ const Projects = () => {
                     {filteredProjects.map((project, index) => (
                         <motion.div
                             key={index}
-                            className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100"
                             variants={itemVariants}
-                            whileHover={{
-                                y: -8,
-                                scale: 1.02
-                            }}
+                            whileHover={{ y: -8, scale: 1.02 }}
+                            className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100"
                         >
-                            {/* Gradient Border Effect */}
-                            <div className={`absolute inset-0 bg-gradient-to-r ${project.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
+                            {/* Subtle Gradient Overlay */}
+                            <div
+                                className={`absolute inset-0 bg-gradient-to-r ${project.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 pointer-events-none`}
+                            />
 
-                            {/* Header with Icon */}
-                            <div className="p-6 border-b border-gray-100">
+                            {/* Card Header */}
+                            <div className="p-6 border-b border-gray-100 relative z-10">
                                 <div className="flex items-center justify-between mb-4">
-                                    <div className={`p-3 rounded-xl bg-gradient-to-r ${project.color} text-white shadow-lg`}>
+                                    <div
+                                        className={`p-3 rounded-xl bg-gradient-to-r ${project.color} text-white shadow-lg`}
+                                    >
                                         <project.icon className="w-6 h-6" />
                                     </div>
                                     <div className="flex gap-2">
-                                        <span className={`px-3 py-1 rounded-full text-xs font-medium ${project.status === 'Live'
-                                            ? 'bg-green-100 text-green-700'
-                                            : 'bg-blue-100 text-blue-700'
-                                            }`}>
+                                        <span
+                                            className={`px-3 py-1 rounded-full text-xs font-medium ${project.status === "Live"
+                                                ? "bg-green-100 text-green-700"
+                                                : "bg-blue-100 text-blue-700"
+                                                }`}
+                                        >
                                             {project.status}
                                         </span>
                                         <span className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-xs font-medium">
@@ -198,13 +202,20 @@ const Projects = () => {
                                         </span>
                                     </div>
                                 </div>
-                                <h3 className="text-xl font-bold text-gray-900 mb-2">{project.title}</h3>
-                                <p className="text-gray-600 leading-relaxed">{project.description}</p>
+
+                                <h3 className="text-xl font-bold text-gray-900 mb-2">
+                                    {project.title}
+                                </h3>
+                                <p className="text-gray-600 leading-relaxed">
+                                    {project.description}
+                                </p>
                             </div>
 
-                            {/* Details */}
-                            <div className="p-6">
-                                <p className="text-gray-700 mb-6 leading-relaxed">{project.details}</p>
+                            {/* Card Body */}
+                            <div className="p-6 relative z-10">
+                                <p className="text-gray-700 mb-6 leading-relaxed">
+                                    {project.details}
+                                </p>
 
                                 {/* Tech Stack */}
                                 <div className="mb-6">
@@ -225,28 +236,36 @@ const Projects = () => {
                                 </div>
 
                                 {/* Action Buttons */}
-                                <div className="flex gap-3">
-                                    <motion.button
-                                        className="flex-1 flex items-center justify-center gap-2 bg-indigo-600 text-white py-3 rounded-xl font-medium hover:bg-indigo-700 transition-colors"
+                                <div className="flex gap-3 mt-auto">
+                                    <motion.a
+                                        href={project.demoLink}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        aria-label={`View demo of ${project.title}`}
+                                        className="flex-1 flex items-center justify-center gap-2 bg-indigo-600 text-white py-3 rounded-xl font-medium hover:bg-indigo-700 transition-colors cursor-pointer"
                                         whileHover={{ scale: 1.02 }}
                                         whileTap={{ scale: 0.98 }}
                                     >
                                         <ExternalLink className="w-4 h-4" />
                                         View Demo
-                                    </motion.button>
-                                    <motion.button
-                                        className="flex items-center justify-center gap-2 bg-gray-100 text-gray-700 py-3 px-4 rounded-xl font-medium hover:bg-gray-200 transition-colors"
+                                    </motion.a>
+
+                                    <motion.a
+                                        href={project.sourceCode}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        aria-label={`View source code of ${project.title}`}
+                                        className="flex items-center justify-center gap-2 bg-gray-100 text-gray-700 py-3 px-4 rounded-xl font-medium hover:bg-gray-200 transition-colors cursor-pointer"
                                         whileHover={{ scale: 1.02 }}
                                         whileTap={{ scale: 0.98 }}
                                     >
                                         <Github className="w-4 h-4" />
-                                    </motion.button>
+                                    </motion.a>
                                 </div>
                             </div>
                         </motion.div>
                     ))}
                 </motion.div>
-
                 {/* Stats */}
                 <motion.div
                     className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto mt-20"
