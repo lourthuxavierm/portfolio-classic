@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Users, ShoppingCart, FileText, Book, User, MessageCircle, Users as Family, Briefcase, ExternalLink, Github, Server, Database, Shield, Code } from 'lucide-react';
+import { Users, ShoppingCart, FileText, Book, MessageCircle, Briefcase, ExternalLink, Github, Server, Database, Shield, Code } from 'lucide-react';
 
 const Projects = () => {
     const projects = [

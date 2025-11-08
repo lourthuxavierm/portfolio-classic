@@ -1,19 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import emailjs from 'emailjs-com';
-import {
-    Mail,
-    Phone,
-    MapPin,
-    Send,
-    User,
-    MessageCircle,
-    AlertCircle,
-    CheckCircle2,
-    Linkedin,
-    Github,
-    Clock
-} from 'lucide-react';
+import { Mail, Phone, MapPin, Send, User, MessageCircle, AlertCircle, CheckCircle2, Linkedin, Github, Clock } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
     const [formData, setFormData] = useState({
@@ -54,13 +42,13 @@ const Contact = () => {
         emailjs
             .send('service_ux1o7hf', 'template_qahsf65', emailData, '5tO6mszXz75G-edtz')
             .then(
-                (response) => {
+                (response: { status: number; text: string }) => {
                     console.log('SUCCESS!', response.status, response.text);
                     showNotification('success', 'Message sent successfully! I\'ll get back to you soon.');
                     setFormData({ title: '', name: '', email: '', message: '' });
                     setLoading(false);
                 },
-                (error) => {
+                (error: Error) => {
                     console.error('FAILED...', error);
                     showNotification('error', 'Failed to send message. Please try again or email me directly.');
                     setLoading(false);

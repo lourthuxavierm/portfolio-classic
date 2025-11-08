@@ -1,6 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Code, Database, Shield, Users, Rocket, ArrowRight } from 'lucide-react';
+import { Calendar, Code, Shield, Users, Rocket, ArrowRight } from 'lucide-react';
 
 const Experience = () => {
     const experiences = [
