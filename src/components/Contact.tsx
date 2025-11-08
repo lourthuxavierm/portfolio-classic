@@ -26,19 +26,19 @@ const Contact = () => {
     const [loading, setLoading] = useState(false);
     const [notification, setNotification] = useState({ show: false, type: '', message: '' });
 
-    const handleChange = (e) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
         });
     };
 
-    const showNotification = (type, message) => {
+    const showNotification = (type: string, message: string) => {
         setNotification({ show: true, type, message });
         setTimeout(() => setNotification({ show: false, type: '', message: '' }), 5000);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setLoading(true);
 
@@ -85,7 +85,7 @@ const Contact = () => {
             y: 0,
             opacity: 1,
             transition: {
-                type: "spring",
+                type: "spring" as const,
                 stiffness: 100,
                 damping: 12
             }
@@ -315,7 +315,7 @@ const Contact = () => {
                                     <textarea
                                         id="message"
                                         name="message"
-                                        rows="6"
+                                        rows={6}
                                         value={formData.message}
                                         onChange={handleChange}
                                         className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all bg-white resize-vertical"
