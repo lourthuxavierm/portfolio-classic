@@ -10,7 +10,7 @@
     "lint": "eslint src --ext ts,tsx"
   },
   "dependencies": {
-    "emailjs-com": "^3.2.0",
+    "@emailjs/browser": "^4.4.1",
     "framer-motion": "^12.23.24",
     "lucide-react": "^0.553.0",
     "react-router-dom": "^7.9.5"
