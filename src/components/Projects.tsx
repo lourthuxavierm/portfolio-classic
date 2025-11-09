@@ -266,33 +266,6 @@ const Projects = () => {
                         </motion.div>
                     ))}
                 </motion.div>
-                {/* Stats */}
-                <motion.div
-                    className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto mt-20"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.3 }}
-                    viewport={{ once: true }}
-                >
-                    {[
-                        { icon: Briefcase, number: projects.length, label: "Projects Completed" },
-                        { icon: Server, number: 6, label: "Full Stack Apps" },
-                        { icon: Database, number: 7, label: "SQL Server DBs" },
-                        { icon: Shield, number: "100%", label: "Client Satisfaction" }
-                    ].map((stat, index) => (
-                        <motion.div
-                            key={index}
-                            className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-gray-100"
-                            whileHover={{ y: -5, transition: { duration: 0.2 } }}
-                        >
-                            <div className="bg-indigo-100 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4">
-                                <stat.icon className="w-6 h-6 text-indigo-600" />
-                            </div>
-                            <div className="text-2xl font-bold text-gray-900 mb-2">{stat.number}</div>
-                            <div className="text-gray-600 text-sm">{stat.label}</div>
-                        </motion.div>
-                    ))}
-                </motion.div>
             </div>
         </section>
     );
