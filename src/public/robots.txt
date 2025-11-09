@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://lourthuxavier.com/sitemap.xml
+
+# Directories
+Disallow: /admin/
+Disallow: /private/
+
+# Files
+Disallow: /package.json
+Disallow: /README.md

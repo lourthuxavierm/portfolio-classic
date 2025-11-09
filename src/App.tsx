@@ -1,3 +1,4 @@
+import { HelmetProvider } from 'react-helmet-async';
 import { useEffect } from 'react';
 import Hero from './components/Hero';
 import Header from './components/Header';
@@ -7,6 +8,7 @@ import Contact from './components/Contact';
 import Projects from './components/Projects';
 import Skills from './components/Skills';
 import About from './components/About';
+import SEO from './components/SEO';
 
 function App() {
 
@@ -19,16 +21,19 @@ function App() {
     }, []);
 
     return (
-        <div className="App bg-gray-50 text-gray-800">
-            <Header />
-            <Hero />
-            <About />
-            <Experience />
-            <Skills />
-            <Projects />
-            <Contact />
-            <Footer />
-        </div>
+        <HelmetProvider>
+            <div className="App bg-gray-50 text-gray-800">
+                <SEO />
+                <Header />
+                <Hero />
+                <About />
+                <Experience />
+                <Skills />
+                <Projects />
+                <Contact />
+                <Footer />
+            </div>
+        </HelmetProvider>
     );
 }
 
